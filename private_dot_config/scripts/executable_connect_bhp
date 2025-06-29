@@ -1,0 +1,11 @@
+#! /bin/bash
+
+#bluetoothctl remove 40:5E:F6:25:F6:D0
+#bluetoothctl scan on
+#sleep 10
+#bluetoothctl pair 40:5E:F6:25:F6:D0
+#sleep 2
+rfcomm connect rfcomm0 40:5E:F6:25:F6:D0
+bluetoothctl connect 40:5E:F6:25:F6:D0
+#bluetoothctl scan off
+#pactl set-default-sink bluez_sink.70_CE_8C_CF_74_22.a2dp_sink

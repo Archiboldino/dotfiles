@@ -1,0 +1,33 @@
+#!/usr/bin/python
+import subprocess
+import re
+import sys
+
+def get_transform(w, h, x, y, totalW, totalH):
+    c0 = w / totalW
+    c2 = h / totalH
+    c1 = x / totalW
+    c3 = y / totalH
+    return f"{c0} 0 {c1} 0 {c2} {c3} 0 0 1"
+
+def get_randr_params(output):
+    try:
+        randr_out = subprocess.Popen("xrandr", stdout=subprocess.PIPE).communicate()
+        total_width, total_height = re.search("Screen.* (\d+) x (\d+),", str(randr_out)).groups()
+        o_width, o_height, o_x, o_y = re.search(f"{output} connected (\d+)x(\d+)\+(\d+)\+(\d+) ", str(randr_out)).groups()
+
+        return float(o_width), float(o_height), float(o_x), float(o_y), float(total_width), float(total_height)
+    except:
+        raise Exception("No output found")
+
+
+def set_matrix(matrix):
+    # TODO Somehow fix hardcoded device
+    subprocess.Popen(f'xinput set-prop "eGalax Inc. eGalaxTouch EXC3200-2505-09.00.00.00" --type=float "Coordinate Transformation Matrix" {matrix}', shell=True).communicate()
+
+
+params = get_randr_params(sys.argv[1])
+print(f'Screen params: {params}')
+matrix = get_transform(*params)
+print(f'Transofrm matrix: {matrix}')
+set_matrix(matrix)

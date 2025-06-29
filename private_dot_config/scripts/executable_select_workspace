@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+import json
+import os
+import sys
+import subprocess as sp
+print("biba")
+
+# Read command output
+wsStdOut = str(sp.run(["/usr/bin/hyprctl",  "-j",  "activeworkspace"], stdout=sp.PIPE, errors="replace").stdout)
+currWorkspace = json.loads(wsStdOut)
+print(sys.argv[1:])
+
+# monitorMultMap = {
+#     "eDP-1": 0,
+#     "HDMI-A-1": 10,
+# }
+
+if (sys.argv[1] == "select"):
+    workspaceId = int(sys.argv[2]) + 10 * currWorkspace["monitorID"]
+    print("hyprctl dispatch workspace %d" % workspaceId)
+    os.popen("hyprctl dispatch workspace %d" % workspaceId)
+
+if (sys.argv[1] == "move"):
+    workspaceId = int(sys.argv[2]) + 10 * currWorkspace["monitorID"]
+    print("hyprctl dispatch movetoworkspacesilent %d" % workspaceId)
+    os.popen("hyprctl dispatch movetoworkspacesilent %d" % workspaceId)

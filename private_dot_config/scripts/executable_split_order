@@ -1,0 +1,5 @@
+#! /bin/bash
+
+curl -X POST https://local.dev.wickes.co.uk:9002/rest/v1/wickes/fulfilment/update \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "lines=01,WAITING,wickes/02,WAITING,wickes/03,WAITING,wickes/04,WAITING,wickes/05,WAITING,wickes/06,WAITING,wickes&orderNumber=$(wl-paste)"

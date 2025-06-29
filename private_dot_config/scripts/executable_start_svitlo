@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+yarn --cwd ~/PROG/bibasvitlo/ dev &
+yarn --cwd ~/PROG/bibasvitloui/ dev
+trap 'kill $(jobs -p)' EXIT

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+APP=$(tofi-drun | xargs)
+if [[ -z $APP ]]; then
+  exit 0
+fi
+uwsm-app -- $APP

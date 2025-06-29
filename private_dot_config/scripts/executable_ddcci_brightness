@@ -1,0 +1,31 @@
+#!/bin/bash
+BR_FEAT_ID=10
+
+if [ -s $(cat /tmp/ddc_bus) ]; then
+  rm /tmp/ddc_bus
+fi
+BUS=$(cat /tmp/ddc_bus ||
+  (notify -r ddcci_br "Detecting I2C bus..." &&
+    ddcutil detect --brief | grep 'Display' -A 1 | grep I2C | awk '{print $3}' | awk -F '/' '{print $NF}' | awk -F '-' '{print $NF}' | tee /tmp/ddc_bus &&
+    notify -r ddcci_br "Bus detected: $(cat /tmp/ddc_bus)"))
+
+DDC_OPTIONS="--bus=$BUS --disable-dynamic-sleep --sleep-multiplier=0.001"
+
+if (($1 == "-s")); then # set to $2
+  SET_BR=$2
+else # increase by $1
+  CURR_STATE=$(ddcutil getvcp $BR_FEAT_ID $DDC_OPTIONS | grep VCP | awk '{print substr($9, 1, length($9) - 1)} {print $13}')
+  CURR_BR=${CURR_STATE%$'\n'*}
+  MAX_BR=${CURR_STATE#*$'\n'}
+  MIN_BR=0
+
+  SET_BR=$(($CURR_BR + $1))
+
+  if (($SET_BR > $MAX_BR)); then
+    SET_BR=$MAX_BR
+  elif (($SET_BR < $MIN_BR)); then
+    SET_BR=$MIN_BR
+  fi
+fi
+
+ddcutil setvcp $BR_FEAT_ID $SET_BR $DDC_OPTIONS

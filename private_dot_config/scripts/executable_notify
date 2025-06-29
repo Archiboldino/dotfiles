@@ -1,0 +1,25 @@
+#!/bin/bash
+EVERYTHING=()
+IDS_DIR=/tmp/notif_ids
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -r|--replace)
+      REPLACEMENT="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    *)
+      EVERYTHING="$EVERYTHING $1" # save positional arg
+      shift # past argument
+      ;;
+  esac
+done
+
+PREV_ID=$(cat $IDS_DIR/$REPLACEMENT)
+[ -z "$PREV_ID" ] && PREV_ID=0
+
+NOTIF_ID=$(notify-send "$EVERYTHING" -p -r $PREV_ID) 
+
+mkdir -p $IDS_DIR
+echo $NOTIF_ID > $IDS_DIR/$REPLACEMENT

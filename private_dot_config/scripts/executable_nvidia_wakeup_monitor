@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while true; do
+  STATUS=$(cat /sys/bus/pci/devices/0000\:01\:00.0/power/runtime_status)
+  if [ $STATUS != "suspended" ]; then
+    notify-send "NVIDIA" "GPU wakeup"
+    sleep 15
+  fi
+  sleep 2
+done

@@ -1,0 +1,10 @@
+#!/bin/bash
+COMP_PID=$(pgrep picom || pgrep fastcompmgr)
+echo [ -z "$COMP_PID" ]; 
+if [ -z "$COMP_PID" ]; then
+  comp&
+  notify -r compos "Started compositor"
+else
+  kill $COMP_PID
+  notify -r compos "Killed compositor"
+fi

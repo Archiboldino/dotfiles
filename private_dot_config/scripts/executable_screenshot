@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Capture screenshot
+screenshot="$(slurp)"
+
+# Process the screenshot and copy to clipboard
+grim -g "$screenshot" - | magick convert - -shave 2x2 PNG:- | satty --filename -

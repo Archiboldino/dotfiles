@@ -1,0 +1,3 @@
+#! /bin/bash
+asusctl profile -P $1
+notify -r profile_switch "$(asusctl profile -p)"

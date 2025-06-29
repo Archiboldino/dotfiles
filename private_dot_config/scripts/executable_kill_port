@@ -1,0 +1,5 @@
+#! /bin/bash
+
+lsof -i :$1
+PID=$(lsof -i :$1 | awk 'FNR == 2 { print $2 }')
+kill $PID

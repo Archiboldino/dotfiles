@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+scrot /tmp/screen.png
+xclip -selection clipboard -t image/png /tmp/screen.png
+rm /tmp/screen.png
+

@@ -1,0 +1,11 @@
+#!/bin/bash
+LED_PATH="/sys/class/leds/asus::kbd_backlight/brightness"
+#CURR_STATE=$(asusctl -k | awk '{print $5}')
+CURR_STATE=$(cat $LED_PATH)
+OFF_BR=0
+
+if (( $CURR_STATE > $OFF_BR )); then # turn off
+    echo 0 > $LED_PATH
+else # turn on
+    echo 1 > $LED_PATH
+fi

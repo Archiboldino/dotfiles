@@ -1,0 +1,14 @@
+#!/bin/python
+
+import json
+import os
+
+currWorkspace = json.loads(os.popen("hyprctl -j activeworkspace").read())
+
+monitorMultMap = {
+    "eDP-1": 10,
+    "HDMI-A-1": -10,
+}
+
+workspaceId = currWorkspace["id"] + monitorMultMap[currWorkspace["monitor"]]
+os.popen("hyprctl dispatch movetoworkspacesilent %d" % workspaceId)

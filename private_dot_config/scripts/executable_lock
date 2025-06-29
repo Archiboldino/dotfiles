@@ -1,0 +1,10 @@
+#!/bin/bash
+TMPBG=/tmp/lock.png
+ 
+id
+xkblayout-state set 0
+playerctl -a pause -i spotify,kdeconnect
+ffmpeg -f x11grab -video_size $(xdpyinfo | awk '/dimensions/{print $2}') -y -i $DISPLAY -filter_complex "boxblur=15:3" -vframes 1 -loglevel quiet $TMPBG
+#i3lock -i ~/Pictures/bsod.png -e 
+asusctl -k low
+i3lock -i $TMPBG -e

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+if [ $1 == "next-tag" ]; then
+    awesome-client 'local lain = require("lain") lain.util.tag_view_nonempty(1)'
+    echo 1 $1
+elif [ $1 == "prev-tag" ]; then 
+    awesome-client 'local lain = require("lain") lain.util.tag_view_nonempty(-1)'
+    echo 2
+elif [ $1 == "next-window" ]; then 
+    awesome-client 'local awful = require("awful") awful.client.focus.byidx(1)'
+    echo 3
+elif [ $1 == "prev-window" ]; then 
+    awesome-client 'local awful = require("awful") awful.client.focus.byidx(-1)'
+    echo 4
+fi

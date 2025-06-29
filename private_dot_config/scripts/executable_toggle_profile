@@ -1,0 +1,8 @@
+#! /bin/bash
+
+PROFILE=$(asusctl profile -p | awk '{ print $4 }')
+
+[[ "$PROFILE" = *LowPower* ]] && asusctl profile -P Balanced
+[[ "$PROFILE" = *Balanced* ]] && asusctl profile -P Low-Power
+notify -r profile_switch "$(asusctl profile -p)"
+exit 0
