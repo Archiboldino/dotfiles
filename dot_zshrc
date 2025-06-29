@@ -139,4 +139,4 @@ alias yas="yes | yay"
 alias weather="curl wttr.in"
 alias icat="kitten icat"
 alias cat=bat
-alias che=chezmoi edit --apply
+alias che="chezmoi edit --apply"
