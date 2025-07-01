@@ -133,7 +133,7 @@ function remove_from_history () {
 }
 
 alias rfh=remove_from_history
-alias fm=ranger
+alias fm=yazi
 alias vim=nvim
 alias yas="yes | yay"
 alias weather="curl wttr.in"
