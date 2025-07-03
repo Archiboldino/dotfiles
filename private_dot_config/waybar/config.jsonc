@@ -186,7 +186,7 @@
     "interval": 7,
     "format-wifi": " ",
     "format-ethernet": "{ipaddr}/{cidr}",
-    "tooltip-format-wifi": "{essid} {signaldBm}dBm {bandwidthDownBytes}  {bandwidthUpBytes} - {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} {signaldBm}dBm\n{bandwidthDownBytes}  {bandwidthUpBytes}\n{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "󰖪 ",
     "format-alt": "{bandwidthDownBytes}  {bandwidthUpBytes}",
