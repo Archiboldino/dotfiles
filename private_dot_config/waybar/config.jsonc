@@ -49,7 +49,7 @@
   },
   "custom/gpu_wakeup": {
     "tooltip": false,
-    "exec-if": "[ $(cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status) != 'suspended' ]",
+    "exec-if": "[ -f /sys/bus/pci/devices/0000:01:00.0/power/runtime_status ] && [ $(cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status) != 'suspended' ]",
     "exec": "echo 'a'",
     "interval": 5,
     "format": " ",
