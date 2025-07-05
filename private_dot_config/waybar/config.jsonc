@@ -184,6 +184,7 @@
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     "interval": 7,
+    "format": "󰖪 ",
     "format-wifi": " ",
     "format-ethernet": "{ipaddr}/{cidr}",
     "tooltip-format-wifi": "{essid} {signaldBm}dBm\n{bandwidthDownBytes}  {bandwidthUpBytes}\n{ifname} via {gwaddr}",
