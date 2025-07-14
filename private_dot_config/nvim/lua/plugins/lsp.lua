@@ -27,11 +27,22 @@ return {
   },
 
   -- TS
-  { "haydenmeade/neotest-jest" },
   {
     "nvim-neotest/neotest",
+    dependencies = { "haydenmeade/neotest-jest", "thenbe/neotest-playwright" },
     opts = {
       adapters = {
+        ["neotest-playwright"] = {
+          options = {
+            persist_project_selection = true,
+            enable_dynamic_test_discovery = true,
+            is_test_file = function(file_path)
+              local extension = file_path:find("%.test%.[tj]sx?$") ~= nil or file_path:find("%.spec%.[tj]sx?$") ~= nil
+              local path = file_path:find("automation/") ~= nil
+              return extension and path
+            end,
+          },
+        },
         ["neotest-jest"] = {
           jestConfigFile = "./jest.config.js",
         },
