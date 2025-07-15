@@ -84,7 +84,7 @@
     // "tooltip-icon-size": 12
   },
   "clock": {
-    "format": "{:%H:%M  %a, %b %e}",
+    "format": "{:%H:%M   %a, %b %e}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "on-click": "swaync-client -t",
     "locale": "uk_UA.UTF-8",
@@ -153,12 +153,12 @@
     "scroll-step": 5,
     "tooltip-format": "{icon} {volume}% - {desc}",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
       "default": [
         "",
         "",
