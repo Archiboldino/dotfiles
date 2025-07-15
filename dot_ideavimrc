@@ -1,0 +1,173 @@
+set rnu
+set nu
+
+
+set wrap lbr
+
+" Tabs
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set et
+
+set ai
+set cin
+
+"set hlsearch
+set showmatch
+set incsearch
+set ignorecase
+
+" :W - sudo save
+command W w !sudo tee % > /dev/null
+
+" Scroll
+set so=7
+
+set hid
+
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set clipboard=unnamedplus
+
+" Regexp
+set magic
+
+" Margin
+set foldcolumn=1
+
+syntax enable
+
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+
+set background=dark
+
+" BINDINGS
+" Space to search
+let mapleader = ","
+map <space> /
+map <C-space> ?
+
+" Status line
+set laststatus=2
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+set statusline=   " clear the statusline for when vimrc is reloaded
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%=                           " right align
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+
+" Ctrl-Shift-J|K move line up/down 
+nmap <C-K> mz:m-2<cr>`z
+nmap <C-J> mz:m+<cr>`z
+vmap <C-K> :m'<-2<cr>`>my`<mzgv`yo`z<CR>
+vmap <C-J> :m'>+<cr>`<my`>mzgv`yo`z<CR>
+vnoremap // "sy/<C-R>s<CR>
+" vnoremap // "sy/\V<C-R>=escape(@",'/\')<CR><CR>
+
+
+" Delete trailing white space on save, useful for some filetypes ;)
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    silent! %s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+"
+" Vundle setup
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9' " Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+" Surround S
+Plugin 'tpope/vim-surround'
+
+Plugin 'francoiscabrol/ranger.vim'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'Shougo/git@gitlab.com:wickesit/microservices/devops/terraform.gitneocomplcache.vim'
+
+"Plugin 'valloric/youcompleteme'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+set ideajoin
+set clipboard+=unnamed
+set clipboard+=ideaput
+nnoremap R :action RenameElement<CR>
+
+nnoremap {{ :action MethodUp<CR>
+nnoremap }} :action MethodDown<CR>
+nnoremap <TAB> :action NextTab<CR>
+nnoremap <s-TAB> :action PreviousTab<CR>
+nnoremap <s-L> :action NextTab<CR>
+nnoremap <s-H> :action PreviousTab<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gE :action GotoPreviousError<CR>
+nnoremap gs <C-A-2>
+nnoremap gS <C-A-2>
+nnoremap [[ :action Back<CR>
+nnoremap ]] :action Forward<CR>
