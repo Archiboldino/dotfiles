@@ -4,7 +4,6 @@
 [core]
 	autocrlf = input
 	compression = 0
-  pager=delta
 [pull]
 	ff = true
 [interactive]
