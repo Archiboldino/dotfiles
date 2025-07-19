@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.config/scripts:$HOME/.cargo/bin:$PATH
+export PATH="$HOME/.jenv/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export TERMINAL=kitty
@@ -81,6 +82,7 @@ plugins=(
      fzf git zoxide aws zsh-autosuggestions yarn thefuck nvm
      zsh-syntax-highlighting command-not-found ohmyzsh-full-autoupdate
 )
+eval "$(jenv init -)"
 
 # Plugin config vars
 ZOXIDE_CMD_OVERRIDE=cd
