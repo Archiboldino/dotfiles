@@ -23,3 +23,4 @@ alias icat="kitten icat"
 alias cat=bat
 alias che="chezmoi edit --apply"
 alias chel="lazygit -p ~/.local/share/chezmoi/"
+alias g=git
