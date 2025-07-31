@@ -9,8 +9,6 @@ end
 set PATH $HOME/bin $HOME/.local/bin /usr/local/bin $HOME/.config/scripts $HOME/.cargo/bin $PATH
 set EDITOR nvim
 
-status --is-interactive; and source (jenv init -|psub)
-
 set --universal zoxide_cmd cd
 
 bind ctrl-x,ctrl-e edit_command_buffer
