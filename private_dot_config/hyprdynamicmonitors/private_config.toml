@@ -1,0 +1,33 @@
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_AC0"
+
+
+[[profiles.laptop_only.conditions.required_monitors]]
+name = "eDP-1"
+[profiles.laptop_only]
+config_file = "hyprconfigs/laptop.conf"
+
+
+[profiles.home_power]
+config_file = "/home/archibold/.config/hyprdynamicmonitors/hyprconfigs/home_dual_power.go.tmpl"
+config_file_type = "template"
+[profiles.home_power.conditions]
+power_state = "AC"
+[[profiles.home_power.conditions.required_monitors]]
+description = "Thermotrex Corporation TL140BDXP01-0"
+monitor_tag = "monitor0"
+[[profiles.home_power.conditions.required_monitors]]
+description = "Dell Inc. DELL P2720D 22TXS03"
+monitor_tag = "monitor1"
+
+[profiles.home_bat]
+config_file = "/home/archibold/.config/hyprdynamicmonitors/hyprconfigs/home_dual_bat.go.tmpl"
+config_file_type = "template"
+[profiles.home_bat.conditions]
+power_state = "BAT"
+[[profiles.home_bat.conditions.required_monitors]]
+description = "Thermotrex Corporation TL140BDXP01-0"
+monitor_tag = "monitor0"
+[[profiles.home_bat.conditions.required_monitors]]
+description = "Dell Inc. DELL P2720D 22TXS03"
+monitor_tag = "monitor1"

@@ -1,9 +1,11 @@
 [Added Associations]
-video/x-matroska=mpv-3.desktop;mpv-2.desktop;
+application/pdf=org.kde.okular.desktop;firefox-2.desktop;
+video/x-matroska=mpv.desktop;
 
 [Default Applications]
+application/pdf=org.kde.okular.desktop;
 text/*=nvim.desktop;
-video/x-matroska=mpv-3.desktop;
+video/x-matroska=mpv-4.desktop;
 x-scheme-handler/https=chromium.desktop;firefox.desktop;
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;
 x-scheme-handler/orcaslicer=OrcaSlicer.desktop;
