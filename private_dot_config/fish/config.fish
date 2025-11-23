@@ -22,3 +22,4 @@ alias cat=bat
 alias che="chezmoi edit --apply"
 alias chel="lazygit -p ~/.local/share/chezmoi/"
 alias g=git
+alias diff="nvim -d"
