@@ -4,4 +4,4 @@
 screenshot="$(slurp)"
 
 # Process the screenshot and copy to clipboard
-grim -g "$screenshot" - | magick convert - -shave 2x2 PNG:- | satty --filename -
+grim -g "$screenshot" - | magick - -shave 2x2 PNG:- | satty --filename -
