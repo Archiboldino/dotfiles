@@ -7,7 +7,7 @@ function fish_greeting
 end
 
 set PATH $HOME/bin $HOME/.local/bin /usr/local/bin $HOME/.config/scripts $HOME/.cargo/bin $PATH
-set EDITOR nvim
+set -gx EDITOR nvim
 
 set --universal zoxide_cmd cd
 

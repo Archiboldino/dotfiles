@@ -1,3 +1,6 @@
 [plugin]
 prepend_previewers = [{ mime = "video/*", run = "noop" }]
 prepend_preloaders = [{ mime = "video/*", run = "noop" }]
+
+[mgr]
+linemode = "size"
