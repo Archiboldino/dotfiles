@@ -1,9 +1,9 @@
 #! /bin/bash
 
-PROFILE=$(asusctl profile -p | awk '{ print $4 }')
+PROFILE=$(asusctl profile get | grep 'Active' | awk '{ print $3 }')
 
-[[ "$PROFILE" = *LowPower* ]] && asusctl profile -P Balanced
-[[ "$PROFILE" = *Balanced* ]] && asusctl profile -P Low-Power
-[[ "$PROFILE" = *Performance* ]] && asusctl profile -P Balanced
-notify -r profile_switch "$(asusctl profile -p | grep Active)"
+[[ "$PROFILE" = *LowPower* ]] && asusctl profile set Balanced
+[[ "$PROFILE" = *Balanced* ]] && asusctl profile set Low-Power
+[[ "$PROFILE" = *Performance* ]] && asusctl profile set Balanced
+notify -r profile_switch "$(asusctl profile get | grep Active)"
 exit 0
