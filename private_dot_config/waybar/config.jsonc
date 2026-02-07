@@ -107,18 +107,18 @@
       "on-scroll-down": "shift_up",
     },
   },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "󰃞",
-      "󰃟",
-      "󰃠"
-    ],
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6,
-  },
+  // "backlight": {
+  //   "device": "intel_backlight",
+  //   "format": "{icon} {percent}%",
+  //   "format-icons": [
+  //     "󰃞",
+  //     "󰃟",
+  //     "󰃠"
+  //   ],
+  //   "on-scroll-up": "brightnessctl set 1%+",
+  //   "on-scroll-down": "brightnessctl set 1%-",
+  //   "min-length": 6,
+  // },
   "battery": {
     "states": {
       "good": 95,
@@ -166,15 +166,15 @@
       ],
     },
   },
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": "Mic: {volume}%",
-    "format-source-muted": "Mic: Muted",
-    "on-click": "pamixer --default-source -t",
-    "on-scroll-up": "pamixer --default-source -i 5",
-    "on-scroll-down": "pamixer --default-source -d 5",
-    "scroll-step": 5,
-  },
+  // "pulseaudio#microphone": {
+  //   "format": "{format_source}",
+  //   "format-source": "Mic: {volume}%",
+  //   "format-source-muted": "Mic: Muted",
+  //   "on-click": "pamixer --default-source -t",
+  //   "on-scroll-up": "pamixer --default-source -i 5",
+  //   "on-scroll-down": "pamixer --default-source -d 5",
+  //   "scroll-step": 5,
+  // },
   //"temperature": {
   //"thermal-zone": 1,
   //"format": "{temperatureF}°F ",
@@ -193,12 +193,12 @@
     "format-alt": "{bandwidthDownBytes}  {bandwidthUpBytes}",
     "on-click-right": "iwgtk",
   },
-  "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
-    "format-connected": " {num_connections}",
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-  },
+  // "bluetooth": {
+  //   "format": " {status}",
+  //   "format-disabled": "", // an empty format will hide the module
+  //   "format-connected": " {num_connections}",
+  //   "tooltip-format": "{device_alias}",
+  //   "tooltip-format-connected": " {device_enumerate}",
+  //   "tooltip-format-enumerate-connected": "{device_alias}",
+  // },
 }
