@@ -23,3 +23,7 @@ alias che="chezmoi edit --apply"
 alias chel="lazygit -p ~/.local/share/chezmoi/"
 alias g=git
 alias diff="nvim -d"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
