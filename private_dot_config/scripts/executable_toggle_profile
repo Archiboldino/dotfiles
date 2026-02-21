@@ -2,8 +2,8 @@
 
 PROFILE=$(asusctl profile get | grep 'Active' | awk '{ print $3 }')
 
-[[ "$PROFILE" = *LowPower* ]] && asusctl profile set Balanced
-[[ "$PROFILE" = *Balanced* ]] && asusctl profile set Low-Power
+[[ "$PROFILE" = *Quiet* ]] && asusctl profile set Balanced
+[[ "$PROFILE" = *Balanced* ]] && asusctl profile set quiet
 [[ "$PROFILE" = *Performance* ]] && asusctl profile set Balanced
 notify -r profile_switch "$(asusctl profile get | grep Active)"
 exit 0
