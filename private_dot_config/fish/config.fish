@@ -13,6 +13,7 @@ set --universal zoxide_cmd cd
 
 bind ctrl-x,ctrl-e edit_command_buffer
 
+alias s="sesh picker"
 alias fm=yazi
 alias vim=nvim
 alias yas="yes | yay"

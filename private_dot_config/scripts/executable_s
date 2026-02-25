@@ -1,2 +1,0 @@
-#!/bin/sh
-sesh connect $(sesh list | fzf)
