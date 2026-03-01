@@ -4,4 +4,4 @@
 screenshot="$(slurp)"
 
 # Process the screenshot and copy to clipboard
-grim -g "$screenshot" - | magick - -shave 2x2 PNG:- | satty --filename -
+grim -g "$screenshot" - | magick - -shave 2x2 PNG:- | env VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json satty --filename -
