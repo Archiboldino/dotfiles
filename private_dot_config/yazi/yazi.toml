@@ -1,6 +1,15 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
 [plugin]
-prepend_previewers = [{ mime = "video/*", run = "noop" }]
+prepend_previewers = [
+  { mime = "video/*", run = "noop" },
+  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
+]
 prepend_preloaders = [{ mime = "video/*", run = "noop" }]
 
 [mgr]
 linemode = "size"
+
+[opener]
+open = [{ run = "xdg-open %s", desc = "Open" }]
+play = [{ run = "mpv %s", for = "unix" }]

@@ -1,5 +1,37 @@
 [[mgr.prepend_keymap]]
-on   = "!"
-for  = "unix"
-run  = 'shell "$SHELL" --block'
+on = "!"
+for = "unix"
+run = 'shell "$SHELL" --block'
 desc = "Open $SHELL here"
+
+[[mgr.prepend_keymap]]
+on = "M"
+run = "plugin mount"
+
+[[mgr.prepend_keymap]]
+on = "2"
+run = "plugin smart-switch 1"
+desc = "Switch or create tab 2"
+[[mgr.prepend_keymap]]
+on = "3"
+run = "plugin smart-switch 2"
+desc = "Switch or create tab 3"
+[[mgr.prepend_keymap]]
+on = "4"
+run = "plugin smart-switch 3"
+desc = "Switch or create tab 4"
+
+[[mgr.prepend_keymap]]
+on = ["<C-s>"]
+run = "plugin kdeconnect-send"
+desc = "Send selected files via KDE Connect"
+
+[[mgr.prepend_keymap]]
+desc = "Open Recycle Bin menu"
+on = ["R", "b"]
+run = "plugin recycle-bin"
+
+[[mgr.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"
