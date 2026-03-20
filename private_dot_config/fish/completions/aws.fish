@@ -3,3 +3,4 @@ function __fish_complete_aws
 end
 
 complete -c aws -f -a "(__fish_complete_aws)"
+complete -c awslocal -f -a "(__fish_complete_aws)"
