@@ -29,7 +29,7 @@ return {
   -- TS
   {
     "nvim-neotest/neotest",
-    dependencies = { "haydenmeade/neotest-jest", "thenbe/neotest-playwright" },
+    dependencies = { "nvim-neotest/neotest-jest", "thenbe/neotest-playwright" },
     opts = {
       adapters = {
         ["neotest-playwright"] = {
@@ -38,13 +38,19 @@ return {
             enable_dynamic_test_discovery = true,
             is_test_file = function(file_path)
               local extension = file_path:find("%.test%.[tj]sx?$") ~= nil or file_path:find("%.spec%.[tj]sx?$") ~= nil
-              local path = file_path:find("automation/") ~= nil
-              return extension and path
+              local path = file_path:find("unit/") == nil
+              return extension and path and io.open(file_path):read("*a"):find("playwright") ~= nil
             end,
           },
         },
         ["neotest-jest"] = {
           jestConfigFile = "./jest.config.js",
+          jest_test_discovery = true,
+          isTestFile = function(file_path)
+            local extension = file_path:find("%.test%.[tj]sx?$") ~= nil or file_path:find("%.spec%.[tj]sx?$") ~= nil
+            local path = file_path:find("automation/") == nil
+            return extension and path and io.open(file_path):read("*a"):find("jest") ~= nil
+          end,
         },
       },
     },
