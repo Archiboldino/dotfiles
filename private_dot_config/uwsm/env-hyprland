@@ -1,4 +1,4 @@
-export AQ_DRM_DEVICES=/dev/dri/card2
+#export AQ_DRM_DEVICES=/dev/dri/card2
 export XCURSOR_SIZE=24
 export GUAKE_ENABLE_WAYLAND=1
 export GSK_RENDERER=opengl
