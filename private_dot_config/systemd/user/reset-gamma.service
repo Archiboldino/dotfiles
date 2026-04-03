@@ -1,0 +1,6 @@
+[Unit]
+Description=Reset sunsetr night gamma
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c 'sunsetr set night_gamma=100'
