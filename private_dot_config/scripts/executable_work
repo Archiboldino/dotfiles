@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 chromium &
 #webstorm&
-~/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin/idea &
+#~/.local/share/JetBrains/Toolbox/apps/intellij-idea-community-edition/bin/idea &
