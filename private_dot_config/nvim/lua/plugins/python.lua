@@ -1,0 +1,27 @@
+return {
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       basedpyright = {
+  --         settings = {
+  --           basedpyright = {
+  --             analysis = {
+  --               autoSearchPaths = true,
+  --               useLibraryCodeForTypes = false,
+  --               typeCheckingMode = "basic",
+  --               diagnosticSeverityOverrides = {
+  --                 reportUnknownParameterType = false,
+  --                 reportUnknownArgumentType = false,
+  --                 reportUnknownLambdaType = false,
+  --                 reportUnknownVariableType = false,
+  --                 reportUnknownMemberType = false,
+  --               },
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+}

@@ -18,9 +18,9 @@ return {
   --   build = ":GeminiBuild", -- Essential: builds the Go server
   --   opts = {},
   -- },
-  {
-    "linw1995/nvim-mcp",
-    build = "cargo install --path .",
-    opts = {},
-  },
+  -- {
+  --   "linw1995/nvim-mcp",
+  --   build = "cargo install --path .",
+  --   opts = {},
+  -- },
 }
