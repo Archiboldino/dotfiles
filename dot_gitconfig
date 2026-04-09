@@ -21,5 +21,10 @@
     hunk-header-style = file line-number syntax
 [merge]
     conflictstyle = diff3
+	tool = nvimdiff
 [diff]
-    colorMoved = default
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$REMOTE\" \"$LOCAL\""
+[difftool]
+	prompt = false

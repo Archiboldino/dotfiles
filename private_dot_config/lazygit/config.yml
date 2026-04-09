@@ -1,0 +1,4 @@
+gui:
+  showRootItemInFileTree: false
+  showNumstatInFilesView: true
+  filterMode: fuzzy
