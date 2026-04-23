@@ -11,3 +11,5 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "Move to normal from insert mode" })
 vim.keymap.set("i", "kk", "<Esc>", { desc = "Move to normal from insert mode" })
 
 vim.keymap.set("n", "<C-I>", "<C-I>", { noremap = true, desc = "Jumplist forward" })
+
+vim.keymap.set("n", "<leader>jn", "<cmd>%!jq --sort-keys .<CR>", { desc = "Normalize JSON" })
