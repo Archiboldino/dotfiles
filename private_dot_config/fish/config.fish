@@ -1,5 +1,7 @@
 source /usr/share/cachyos-fish-config/cachyos-config.fish
 source ~/.config/fish/secrets.fish
+source ~/.config/fish/functions/_nvm_check.fish
+_nvm_check
 
 # overwrite greeting
 # potentially disabling fastfetch
