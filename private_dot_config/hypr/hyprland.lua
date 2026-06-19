@@ -349,16 +349,24 @@ hl.bind(mainMod .. " + CTRL + SHIFT + O", hl.dsp.workspace.swap_monitors({ monit
 -- binde = , XF86KbdBrightnessDown, exec, brightnessctl s 10%-
 hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeating = true })
 -- TEMP: while f2 f3 are not working
--- hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) - 10 ))"), { repeating = true })
--- hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) + 10 ))"), { repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { repeating = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeating = true })
 hl.bind("CTRL + XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
 -- hl.bind("CTRL + XF86KbdBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
 hl.bind("CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
 hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
--- hl.bind("CTRL + XF86MonBrightnessUp",  hl.dsp.exec_cmd("sunsetr set night_gamma=100"))
--- hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("sunsetr preset noblue"))
+hl.bind(
+	"SHIFT + XF86MonBrightnessDown",
+	hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) - 10 ))"),
+	{ repeating = true }
+)
+hl.bind(
+	"SHIFT + XF86MonBrightnessUp",
+	hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) + 10 ))"),
+	{ repeating = true }
+)
+hl.bind("SHIFT + CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("sunsetr set night_gamma=100"))
+hl.bind("SHIFT + CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("sunsetr preset noblue"))
 hl.bind("ALT + XF86KbdBrightnessUp", hl.dsp.exec_cmd("ddcci_brightness +10"))
 -- hl.bind("ALT + XF86KbdBrightnessDown", hl.dsp.exec_cmd("ddcci_brightness -10"))
 hl.bind("ALT + XF86MonBrightnessUp", hl.dsp.exec_cmd("ddcci_brightness +10"))
