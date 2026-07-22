@@ -40,9 +40,9 @@ end)
 -- hl.env("GDK_SCALE", "2")
 
 hl.config({
-	xwayland = {
-		force_zero_scaling = true,
-	},
+	-- xwayland = {
+	-- 	force_zero_scaling = true,
+	-- },
 
 	cursor = {
 		no_hardware_cursors = 2,
@@ -88,10 +88,11 @@ hl.config({
 	misc = {
 		disable_hyprland_logo = true,
 		on_focus_under_fullscreen = 1,
-		exit_window_retains_fullscreen = true,
+		exit_window_retains_fullscreen = false,
 		middle_click_paste = false,
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
+		initial_workspace_tracking = 2,
 
 		-- enable_swallow = true,
 		swallow_regex = ".*kitty.*",
