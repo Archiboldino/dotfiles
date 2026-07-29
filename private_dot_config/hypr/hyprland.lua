@@ -92,7 +92,7 @@ hl.config({
 		middle_click_paste = false,
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
-		initial_workspace_tracking = 2,
+		-- initial_workspace_tracking = 2,
 
 		-- enable_swallow = true,
 		swallow_regex = ".*kitty.*",
@@ -234,26 +234,13 @@ hl.config({
 		-- 		ipc = false,
 		-- 	},
 		-- },
-		-- hyprexpo = {
-		-- 	columns = 3,
-		-- 	gap_size = 5,
-		-- 	bg_col = "rgb(111111)",
-		-- 	-- workspace_method = "center m+1", -- [center/first] [workspace] e.g. first 1 or center m+1
-		-- 	skip_empty = true,
-		--
-		-- 	enable_gesture = true, -- laptop touchpad
-		-- 	-- finger_count = 3,      -- 3 or 4
-		-- 	-- gesture_distance = 200, -- how far is the "max"
-		-- 	-- gesture_positive = false, -- positive = swipe down. Negative = swipe up.
-		-- },
+		hymission = {
+			toggle_switch_mode = 1,
+			switch_toggle_auto_next = 1,
+			switch_release_key = "Super_L",
+		},
 	},
 })
-
--- Example windowrule v1
--- windowrule = float, ^(kitty)$
--- Example windowrule v2
--- windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
--- See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 
 local mainMod = "SUPER"
 
@@ -272,6 +259,7 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("screenshot"))
 hl.bind("CTRL + SHIFT + " .. mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind("CTRL + " .. mainMod .. " + M", hl.dsp.workspace.toggle_special())
 hl.bind(mainMod .. " + N", hl.dsp.window.move({ workspace = "special" }))
+hl.bind(mainMod .. " + A", hl.plugin.hymission.toggle)
 -- bind = $mainMod, A, hymission:toggle
 
 -- Move focus with mainMod + arrow keys
