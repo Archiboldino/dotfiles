@@ -9,7 +9,7 @@ prepend_previewers = [
 prepend_preloaders = [{ mime = "video/*", run = "noop" }]
 
 [mgr]
-linemode = "size"
+linemode = "mtime"
 
 [opener]
 open = [{ run = "xdg-open %s", desc = "Open" }]
