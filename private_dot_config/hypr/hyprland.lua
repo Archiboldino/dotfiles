@@ -4,7 +4,7 @@
 --
 
 -- See https://wiki.hyprland.org/Configuring/Monitors/
-require("monitors")
+dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
 
 -- See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -96,6 +96,8 @@ hl.config({
 
 		-- enable_swallow = true,
 		swallow_regex = ".*kitty.*",
+
+		render_unfocused_fps = 60,
 	},
 
 	binds = {
@@ -340,10 +342,10 @@ hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeat
 -- TEMP: while f2 f3 are not working
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { repeating = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeating = true })
-hl.bind("CTRL + XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
+hl.bind("CTRL + XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 98%"))
 -- hl.bind("CTRL + XF86KbdBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
-hl.bind("CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
-hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
+hl.bind("CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 98%"))
+hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 99%"))
 hl.bind(
 	"SHIFT + XF86MonBrightnessDown",
 	hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) - 10 ))"),
@@ -388,6 +390,7 @@ hl.bind(
 )
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 -- hl.bind("switch:Lid Switch", hl.dsp.exec_cmd("playerctl -a pause"))
+hl.bind(mainMod .. " + G", hl.dsp.window.tag({ tag = "game" }))
 
 -- Window rules
 hl.window_rule({
@@ -430,10 +433,18 @@ hl.window_rule({
 	match = { class = ".*teams.*" },
 })
 
-hl.window_rule({ match = { class = ".*pavucontrol.*" }, float = true, group = "barred" })
-hl.window_rule({ match = { class = ".*blueman-manager.*" }, float = true, group = "barred" })
-hl.window_rule({ match = { class = ".*iwgtk.*" }, float = true, group = "barred" })
-hl.window_rule({ match = { class = ".*xfce4-power-manager-settings.*" }, float = true, group = "barred" })
+hl.window_rule({ match = { class = ".*pavucontrol.*" }, tag = "+popup" })
+hl.window_rule({ match = { class = ".*blueman-manager.*" }, tag = "+popup" })
+hl.window_rule({ match = { class = ".*iwgtk.*" }, tag = "+popup" })
+hl.window_rule({ match = { class = ".*xfce4-power-manager-settings.*" }, tag = "+popup" })
+hl.window_rule({
+	match = { tag = "popup" },
+	float = true,
+	group = "barred",
+	persistent_size = true,
+})
+
+hl.window_rule({ match = { tag = "game" }, render_unfocused = true, no_screen_share = true })
 
 -- -- Fix odd behaviors in IntelliJ IDEs --
 --! Fix focus issues when dialogs are opened or closed
