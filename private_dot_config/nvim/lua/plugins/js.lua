@@ -6,9 +6,13 @@ return {
       adapters = {
         ["neotest-playwright"] = {
           options = {
-            persist_project_selection = true,
-            -- enable_dynamic_test_discovery = true,
+            -- persist_project_selection = true,
+            enable_dynamic_test_discovery = true,
             is_test_file = function(file_path)
+              if !file_path then
+                return false
+              end
+
               local extension = file_path:find("%.test%.[tj]sx?$") ~= nil or file_path:find("%.spec%.[tj]sx?$") ~= nil
               local no_unit = file_path:find("unit/") == nil
               local automation_path = file_path:find("automation/") ~= nil
@@ -19,16 +23,12 @@ return {
           },
         },
         ["neotest-jest"] = {
-          jestConfigFile = "./jest.config.js",
-          -- jest_test_discovery = true,
+          -- jestConfigFile = "./jest.config.js",
+          jest_test_discovery = true,
           isTestFile = function(file_path)
-            local extension = file_path:find("%.test%.[tj]sx?$") ~= nil or file_path:find("%.spec%.[tj]sx?$") ~= nil
-            local unit_path = file_path:find("unit/") ~= nil
-            if extension and unit_path then
-              return true
-            end
-            local file_content = io.open(file_path):read("*a")
-            return file_content:find("it") ~= nil or file_content:find("jest") ~= nil
+            local default = require("neotest-jest.jest-util").defaultIsTestFile(file_path)
+            local unit = file_path:find("unit/") ~= nil
+            return default and unit
           end,
         },
       },
