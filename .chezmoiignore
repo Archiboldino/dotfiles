@@ -1,1 +1,15 @@
 key.txt.age
+{{ if ne .chezmoi.os "linux" }}
+.config/hypr
+.config/waybar
+.config/swaync
+.config/systemd
+.config/tofi
+.config/uwsm
+.config/sunsetr
+.config/yay
+.config/handlr
+.config/mimeapps.list
+.config/wall.png
+.config/chromium-flags.conf
+{{ end }}

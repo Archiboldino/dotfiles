@@ -1,5 +1,5 @@
 #! /bin/bash
 
 curl -X POST https://local.dev.wickes.co.uk:9002/rest/v1/wickes/fulfilment/update \
-   -H "Content-Type: application/x-www-form-urlencoded" \
-   -d "lines=01,SHIPPED,wickes/02,SHIPPED,wickes/03,SHIPPED,wickes/04,SHIPPED,wickes/05,SHIPPED,wickes/06,SHIPPED,wickes&orderNumber=$(xclip -o -selection clipboard)"
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "lines=01,SHIPPED,wickes/02,SHIPPED,wickes/03,SHIPPED,wickes/04,SHIPPED,wickes/05,SHIPPED,wickes/06,SHIPPED,wickes&orderNumber=$(wl-paste)"
