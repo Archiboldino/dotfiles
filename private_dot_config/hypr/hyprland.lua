@@ -4,7 +4,6 @@
 --
 
 -- See https://wiki.hyprland.org/Configuring/Monitors/
-dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
 
 -- See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -12,7 +11,7 @@ hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" 
 hl.on("hyprland.start", function()
 	--hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("uwsm app -- kitten quick-access-terminal")
-	hl.exec_cmd("uwsm app -- hyprland-per-window-layout")
+	-- hl.exec_cmd("uwsm app -- hyprland-per-window-layout")
 	--hl.exec_cmd("uwsm app -- swaync")
 	hl.exec_cmd("uwsm app -- /usr/bin/kdeconnectd")
 	hl.exec_cmd("uwsm app -s b -- playerctld")
@@ -26,6 +25,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("trash-empty 30 -f")
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets,pkcs11,ssh")
 	hl.exec_cmd("dbus-update-activation-environment --systemd GNOME_KEYRING_CONTROL")
+
+	hl.exec_cmd("uwsm app -- obsidian", { workspace = "special:obsidian silent" })
 end)
 
 -- Source a file (multi-file configs)
@@ -259,8 +260,9 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind("CTRL + grave", hl.dsp.exec_cmd("kitten quick-access-terminal"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("screenshot"))
 hl.bind("CTRL + SHIFT + " .. mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
-hl.bind("CTRL + " .. mainMod .. " + M", hl.dsp.workspace.toggle_special())
-hl.bind(mainMod .. " + N", hl.dsp.window.move({ workspace = "special" }))
+-- hl.bind("CTRL + " .. mainMod .. " + M", hl.dsp.workspace.toggle_special())
+-- hl.bind(mainMod .. " + N", hl.dsp.window.move({ workspace = "special" }))
+hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("obsidian"))
 hl.bind(mainMod .. " + A", hl.plugin.hymission.toggle)
 -- bind = $mainMod, A, hymission:toggle
 
@@ -342,10 +344,10 @@ hl.bind("XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeat
 -- TEMP: while f2 f3 are not working
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 10%-"), { repeating = true })
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 10%+"), { repeating = true })
-hl.bind("CTRL + XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 98%"))
+hl.bind("CTRL + XF86KbdBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
 -- hl.bind("CTRL + XF86KbdBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
-hl.bind("CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 98%"))
-hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 99%"))
+hl.bind("CTRL + XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s 100%"))
+hl.bind("CTRL + XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 0%"))
 hl.bind(
 	"SHIFT + XF86MonBrightnessDown",
 	hl.dsp.exec_cmd("sunsetr set night_gamma=$(( $(sunsetr get night_gamma) - 10 ))"),
@@ -496,3 +498,6 @@ hl.workspace_rule({ workspace = "3", layout = "scrolling", gaps_out = 0, gaps_in
 hl.workspace_rule({ workspace = "2", layout = "scrolling", gaps_out = 0, gaps_in = 0, no_rounding = true })
 hl.workspace_rule({ workspace = "7", layout = "scrolling", gaps_out = 0, gaps_in = 0, no_rounding = true })
 hl.workspace_rule({ workspace = "8", layout = "scrolling", gaps_out = 0, gaps_in = 0, no_rounding = true })
+
+-- Added by hyprmoncfg: its generated monitor rules load last, so nothing before this can override the applied layout.
+dofile(os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua")
