@@ -1,6 +1,5 @@
 "schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-
 [plugin]
 prepend_previewers = [
   { mime = "video/*", run = "noop" },

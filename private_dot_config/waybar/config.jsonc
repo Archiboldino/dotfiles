@@ -10,7 +10,8 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "hyprland/window"
+    "hyprland/window",
+    "custom/wintags"
   ],
   "modules-right": [
     "tray",
@@ -39,6 +40,11 @@
     "tooltip": false,
     "on-scroll-up": "hyprctl dispatch cyclenext",
     "on-scroll-down": "hyprctl dispatch cyclenext",
+  },
+  "custom/wintags": {
+    "exec": "hyprctl activewindow -j | jq -r '.tags | join(\" \")'",
+    "interval": 10,
+    "format": "[{}]",
   },
   "custom/power_profile": {
     "exec": "sensors | grep cpu_fan | awk '{print $2}'",

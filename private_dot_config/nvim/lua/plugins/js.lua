@@ -1,5 +1,19 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        tsgo = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = "non-relative",
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "nvim-neotest/neotest",
     dependencies = { "nvim-neotest/neotest-jest", "thenbe/neotest-playwright" },
     opts = {
@@ -9,7 +23,7 @@ return {
             -- persist_project_selection = true,
             enable_dynamic_test_discovery = true,
             is_test_file = function(file_path)
-              if !file_path then
+              if not file_path then
                 return false
               end
 
@@ -28,7 +42,8 @@ return {
           isTestFile = function(file_path)
             local default = require("neotest-jest.jest-util").defaultIsTestFile(file_path)
             local unit = file_path:find("unit/") ~= nil
-            return default and unit
+            local cdk = file_path:find("cdk/") ~= nil
+            return default and (unit or cdk)
           end,
         },
       },
