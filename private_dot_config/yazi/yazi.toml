@@ -4,8 +4,13 @@
 prepend_previewers = [
   { mime = "video/*", run = "noop" },
   { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
+  { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
 ]
-prepend_preloaders = [{ mime = "video/*", run = "noop" }]
+prepend_preloaders = [
+  # 3d objects
+  { url = "*.{3mf,obj,pts,ply,stl,step,stp}", run = "f3d-preview" },
+  { mime = "video/*", run = "noop" },
+]
 
 [mgr]
 linemode = "mtime"
