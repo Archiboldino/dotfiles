@@ -1,4 +1,7 @@
+{{ if ne .chezmoi.os "linux" }}
 source /usr/share/cachyos-fish-config/cachyos-config.fish
+{{ end }}
+
 source ~/.config/fish/secrets.fish
 source ~/.config/fish/functions/_nvm_check.fish
 _nvm_check
@@ -10,6 +13,7 @@ function fish_greeting
 end
 
 set PATH $HOME/bin $HOME/.local/bin /usr/local/bin $HOME/.config/scripts $HOME/.cargo/bin $PATH
+
 set -gx EDITOR nvim
 
 set --universal zoxide_cmd cd
