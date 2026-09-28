@@ -3,11 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        tsgo = {
-          init_options = {
-            preferences = {
-              importModuleSpecifierPreference = "non-relative",
-            },
+        tsc = {
+          settings = {
+            ["js/ts"] = { importModuleSpecifierPreference = "non-relative" },
           },
         },
       },
