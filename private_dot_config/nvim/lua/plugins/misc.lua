@@ -17,4 +17,18 @@ return {
       },
     },
   },
+  { "nvim-mini/mini.align", version = "*", config = true, event = { "BufReadPost", "BufNewFile" } },
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      scratch = {
+        ft = function()
+          local default = (vim.bo.buftype == "" and vim.bo.filetype ~= "") and vim.bo.filetype or "markdown"
+          local ft = vim.fn.input({ prompt = "Filetype: ", default = default, completion = "filetype" })
+          return ft ~= "" and ft or default
+        end,
+      },
+    },
+  },
 }
