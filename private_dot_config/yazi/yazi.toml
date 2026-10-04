@@ -1,4 +1,4 @@
-"schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+#:schema https://yazi-rs.github.io/schemas/yazi.json
 
 [plugin]
 prepend_previewers = [
@@ -13,8 +13,10 @@ prepend_preloaders = [
 ]
 
 [mgr]
-linemode = "mtime"
+linemode = "size"
 
 [opener]
-open = [{ run = "xdg-open %s", desc = "Open" }]
-play = [{ run = "mpv %s", for = "unix" }]
+open = [
+  { run = "uwsm app -- xdg-open $@", for = "unix", desc = "Open", orphan = true },
+]
+play = [{ run = "uwsm app -- mpv %s", for = "unix", orphan = true }]
